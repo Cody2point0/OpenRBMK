@@ -1,14 +1,4 @@
--- OpenRBMK Any-Core Monitor — v14.20 (60x24 display)
--- Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUTO
---
--- FIXES / CHANGES (from v14.19):
--- v14.20:
---  1) Fix flux return unpack bug (avg/total/max were being mis-assigned).
---  2) FLUX[] now displays average core flux (human readable).
---  3) Flux SCRAM uses max-per-rod flux (prevents harmless total-flux insertion blips from SCRAM).
---  4) AUTO authority clamp is temperature-based: 20C -> rodHoldCold, (maxTargetTempC-300) -> full authority, linear between.
---  5) Remove flux-based AUTO magnitude (flux is safety/display only).
---  6) Fix GLOBAL AUTO path using undefined variable (adjustedTemp).
+-- OpenRBMK Any-Core Monitor — v14.20.00 (60x24 display)
 
 local component = require("component")
 local event     = require("event")
@@ -24,7 +14,7 @@ local redstoneManualAddr = "bab2a090-a584-4eef-809b-ce26ecdf2b68" -- manual cont
 local buttonSide, resetSide, auxToggleSide = 3, 2, 3 -- dn=0 up=1 n=2 s=3 w=3 e=4
 
 local titleStr    = "OpenRBMK Any-Core Monitor"
-local versionStr  = "V14.20"
+local versionStr  = "V14.20.00"
 
 -- Default config values (overridden by floppy)
 local shutdownTempC    = 550
