@@ -4,13 +4,7 @@ OpenRBMK is a real-time monitoring and control system for RBMK-style reactors bu
 
 It is designed to emulate structured reactor control systems with deterministic behavior, fast update rates, and safety-first logic.
 
----
-
-## Version
-
-Current: v14.20
-
----
+<br>
 
 ## Overview
 
@@ -18,7 +12,7 @@ OpenRBMK provides continuous reactor telemetry, derived physics calculations, au
 
 The system operates on a fixed update loop (~0.1s) and is designed for full-core monitoring with stable, predictable output.
 
----
+<br>
 
 ## Features
 
@@ -45,7 +39,7 @@ The system operates on a fixed update loop (~0.1s) and is designed for full-core
 - Structured layout for critical data
 - ~10 Hz refresh rate
 
----
+<br>
 
 ## Architecture
 
@@ -58,7 +52,7 @@ Design goals:
 - Fail-safe defaults
 - Minimal dependencies
 
----
+<br>
 
 ## Requirements
 
@@ -68,7 +62,7 @@ Design goals:
 - GPU + screen (Tier 2+ recommended)
 - Keyboard
 
----
+<br>
 
 ## Installation
 
@@ -78,20 +72,7 @@ git clone https://github.com/Cody2point0/OpenRBMK.git
 Copy to OpenComputers filesystem:
 /home/OpenRBMK/
 
----
-
-## Usage
-
-Run:
-lua OpenRBMK.lua
-
----
-
-## Controls
-
-X → Exit program
-
----
+<br>
 
 ## Data Model
 
@@ -107,7 +88,7 @@ Derived:
 - Thermal power
 - k_eff estimate
 
----
+<br>
 
 ## Safety Logic
 
@@ -121,7 +102,7 @@ Behavior:
 - Latched state (manual reset required)
 - AUTO control limited by temperature
 
----
+<br>
 
 ## Changes (v14.20)
 
@@ -135,7 +116,7 @@ Changed:
 Fixed:
 - GLOBAL AUTO undefined variable reference
 
----
+<br>
 
 ## Versioning
 
@@ -145,13 +126,13 @@ v14.20
 Optional extended format:
 14.20.00(a)
 
----
+<br>
 
 ## License
 
 Not specified
 
----
+<br>
 
 ## Disclaimer
 

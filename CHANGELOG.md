@@ -1,14 +1,14 @@
 
 ## Unreleased Changes
-Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUTO
+
 ### Changed
 
 ### Fixed
 
 ### Added
 
+<br>
 
----
 ## OpenRBMK 14.20.00 - 2026-03-19
 
 ### Changed
@@ -21,8 +21,8 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 - FLUX[] now displays average core flux instead of individual rod flux
 - Fixed GLOBAL AUTO path using undefined variable
 
+<br>
 
----
 ## OpenRBMK 14.19.00 - 2026-03-18
 
 ### Changed
@@ -39,8 +39,8 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 - Dynamic rod indexing (removed static array dependence)
 - Support for heterogeneous reactor layouts
 
+<br>
 
----
 ## OpenRBMK 14.18.00 - 2026-03-17
 
 ### Changed
@@ -55,8 +55,8 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 - AUTO control mode (initial implementation)
 - Control authority scaling system
 
+<br>
 
----
 ## OpenRBMK 14.17.00 - 2026-03-16
 
 ### Changed
@@ -71,8 +71,8 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 - SCRAM system (first stable implementation)
 - Threshold-based shutdown triggers
 
+<br>
 
----
 ## OpenRBMK 14.16.00 - 2026-03-15
 
 ### Changed
