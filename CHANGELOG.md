@@ -6,9 +6,9 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 ### Fixed
 
 ### Added
-<!-- THREE LINES OF SPACE BETWEEN RELEASES
 
--->
+
+---
 ## OpenRBMK 14.20.00 - 2026-03-19
 
 ### Changed
@@ -20,10 +20,9 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 - Corrected flux return unpack assignment
 - FLUX[] now displays average core flux instead of individual rod flux
 - Fixed GLOBAL AUTO path using undefined variable
-<!-- THREE LINES OF SPACE BETWEEN RELEASES
 
 
--->
+---
 ## OpenRBMK 14.19.00 - 2026-03-18
 
 ### Changed
@@ -41,10 +40,7 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 - Support for heterogeneous reactor layouts
 
 
-<!-- THREE LINES OF SPACE BETWEEN RELEASES
-
-
--->
+---
 ## OpenRBMK 14.18.00 - 2026-03-17
 
 ### Changed
@@ -60,10 +56,7 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 - Control authority scaling system
 
 
-<!-- THREE LINES OF SPACE BETWEEN RELEASES
-
-
--->
+---
 ## OpenRBMK 14.17.00 - 2026-03-16
 
 ### Changed
@@ -79,10 +72,7 @@ Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUT
 - Threshold-based shutdown triggers
 
 
-<!-- THREE LINES OF SPACE BETWEEN RELEASES
-
-
--->
+---
 ## OpenRBMK 14.16.00 - 2026-03-15
 
 ### Changed
