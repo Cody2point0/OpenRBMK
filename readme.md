@@ -2,7 +2,7 @@ A collection of all the code I have made for anything even remotely related to O
 
 
 # Programs List
-# OpenRBMK
+## OpenRBMK
 
 OpenRBMK is a real-time monitoring and control system for RBMK-style reactors built for OpenComputers and HBM Nuclear Tech.
 
@@ -10,7 +10,7 @@ It is designed to emulate structured reactor control systems with deterministic 
 
 <br>
 
-## Overview
+### Overview
 
 OpenRBMK provides continuous reactor telemetry, derived physics calculations, automated safety systems, and a GPU-rendered interface.
 
@@ -18,34 +18,34 @@ The system operates on a fixed update loop (~0.1s) and is designed for full-core
 
 <br>
 
-## Features
+### Features
 
-### Monitoring
+#### Monitoring
 - Core temperature (per rod + aggregate)
 - Neutron flux (average + per-rod max)
 - Control level and target level
 - Fuel depletion and xenon poisoning
 
-### Calculations
+#### Calculations
 - Thermal power estimation
 - k-effective (k_eff)
 - Flux averaging and peak detection
 
-### Safety
+#### Safety
 - Automatic SCRAM system
 - Temperature-based protection
 - Flux-based emergency detection (per-rod max)
 - Latched shutdown state
 - AUTO authority limiting based on temperature
 
-### Display
+#### Display
 - GPU-rendered interface (OpenComputers)
 - Structured layout for critical data
 - ~10 Hz refresh rate
 
 <br>
 
-## Architecture
+### Architecture
 
 Single-file system:
 
@@ -58,7 +58,7 @@ Design goals:
 
 <br>
 
-## Requirements
+### Requirements
 
 - Minecraft (modded)
 - OpenComputers
@@ -68,17 +68,11 @@ Design goals:
 
 <br>
 
-## Installation
-
-Clone repository:
-git clone https://github.com/Cody2point0/OpenRBMK.git
-
-Copy to OpenComputers filesystem:
-/home/OpenRBMK/
+### Installation
 
 <br>
 
-## Data Model
+### Data Model
 
 Raw inputs:
 - getTemp()
@@ -94,7 +88,7 @@ Derived:
 
 <br>
 
-## Safety Logic
+### Safety Logic
 
 SCRAM triggers when:
 - Temperature exceeds limits
@@ -108,7 +102,7 @@ Behavior:
 
 <br>
 
-## Changes (v14.20)
+### Changes (v14.20)
 
 Changed:
 - Corrected flux return unpack assignment
@@ -122,7 +116,7 @@ Fixed:
 
 <br>
 
-## Versioning
+### Versioning
 
 Current format:
 v14.20
@@ -132,12 +126,12 @@ Optional extended format:
 
 <br>
 
-## License
+### License
 
 Not specified
 
 <br>
 
-## Disclaimer
+### Disclaimer
 
 This project is a simulation system for modded environments. It is not intended for real-world reactor control.
