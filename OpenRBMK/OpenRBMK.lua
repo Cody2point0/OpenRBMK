@@ -1,4 +1,4 @@
--- OpenRBMK Any-Core Monitor — v14.20 (60x24 display)
+-- OpenRBMK Any-Core Monitor — v14.20.02 (60x24 display)
 -- Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUTO
 --
 -- FIXES / CHANGES (from v14.19):
@@ -24,7 +24,7 @@ local redstoneManualAddr = "bab2a090-a584-4eef-809b-ce26ecdf2b68" -- manual cont
 local buttonSide, resetSide, auxToggleSide = 3, 2, 3 -- dn=0 up=1 n=2 s=3 w=3 e=4
 
 local titleStr    = "OpenRBMK Any-Core Monitor"
-local versionStr  = "V14.20"
+local versionStr  = "V14.20.02"
 
 -- Default config values (overridden by floppy)
 local shutdownTempC    = 550
