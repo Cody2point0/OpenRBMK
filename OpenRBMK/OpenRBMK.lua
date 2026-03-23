@@ -1,4 +1,14 @@
--- OpenRBMK Any-Core Monitor — v14.20.00 (60x24 display)
+-- OpenRBMK Any-Core Monitor — v14.20 (60x24 display)
+-- Adaptive Control + RBMK Heater (HEATEX) map support + Flux + Unattended-safe AUTO
+--
+-- FIXES / CHANGES (from v14.19):
+-- v14.20:
+--  1) Fix flux return unpack bug (avg/total/max were being mis-assigned).
+--  2) FLUX[] now displays average core flux (human readable).
+--  3) Flux SCRAM uses max-per-rod flux (prevents harmless total-flux insertion blips from SCRAM).
+--  4) AUTO authority clamp is temperature-based: 20C -> rodHoldCold, (maxTargetTempC-300) -> full authority, linear between.
+--  5) Remove flux-based AUTO magnitude (flux is safety/display only).
+--  6) Fix GLOBAL AUTO path using undefined variable (adjustedTemp).
 
 local component = require("component")
 local event     = require("event")
@@ -14,7 +24,7 @@ local redstoneManualAddr = "bab2a090-a584-4eef-809b-ce26ecdf2b68" -- manual cont
 local buttonSide, resetSide, auxToggleSide = 3, 2, 3 -- dn=0 up=1 n=2 s=3 w=3 e=4
 
 local titleStr    = "OpenRBMK Any-Core Monitor"
-local versionStr  = "V14.20.00"
+local versionStr  = "V14.20"
 
 -- Default config values (overridden by floppy)
 local shutdownTempC    = 550
@@ -121,7 +131,9 @@ local nx,nz=0,0; local rsMain,rsAux,rsManual=nil,nil,nil
 local flowSec=0; local gauge=nil
 local manualTargetLevel=0
 local debounceTop,debounceBottom=false,false
-local GREEN,YELLOW,RED,WHITE=0x00FF00,0xFFFF00,0xFF0000,0xFFFFFF
+local GREEN,YELLOW,RED,WHITE,MID_GRAY=0x00FF00,0xFFFF00,0xFF0000,0xFFFFFF,0x555555
+local mapCache={}
+local mapDirty=true
 
 -- Flux state (computed per loop)
 local fluxAvg, fluxTotal, fluxMax = 0, 0, 0
@@ -195,6 +207,8 @@ local function scanComponents()
 
   if component.isAvailable("ntm_fluid_gauge") then gauge=component.ntm_fluid_gauge end
   haveLayout=false
+  mapCache={}
+  mapDirty=true
 end
 
 -- prediction function with independent state
@@ -273,6 +287,8 @@ local function buildLayout()
   end
 
   haveLayout=true
+  mapCache={}
+  mapDirty=true
 end
 
 -- AVERAGES
@@ -376,17 +392,24 @@ end
 
 local function drawMap()
   if not haveLayout then buildLayout() end
+  if nx<=0 or nz<=0 then return end
+
   local spacing = cellSize
+  local desired = {}
+
+  for ix=1,nx do
+    desired[ix]={}
+    for iz=1,nz do
+      desired[ix][iz]=MID_GRAY
+    end
+  end
 
   -- fuel rods
   for i=1,#rods do
     local r=rods[i]
     local okT,t=pcall(function() return r.p.getSkinHeat() end)
     local tc=(okT and type(t)=="number") and t or 0
-    local c=(tc>=shutdownTempC) and RED or lerpColorGR(tc/shutdownTempC)
-    local sx=originX + (r.ix - 1) * spacing * xScale
-    local sy=originY + (r.iz - 1) * spacing * yScale
-    plotBox(sx, sy, 2, 2, c)
+    desired[r.ix][r.iz]=(tc>=shutdownTempC) and RED or lerpColorGR(tc/shutdownTempC)
   end
 
   -- control rods
@@ -394,10 +417,7 @@ local function drawMap()
     local r=ctrlCols[i]
     local okL,l=pcall(function() return r.p.getLevel() end)
     local lv=(okL and type(l)=="number") and l or 0
-    local c=lerpColorWR(lv/100)
-    local sx=originX + (r.ix - 1) * spacing * xScale
-    local sy=originY + (r.iz - 1) * spacing * yScale
-    plotBox(sx, sy, 2, 2, c)
+    desired[r.ix][r.iz]=lerpColorWR(lv/100)
   end
 
   -- heaters
@@ -405,11 +425,29 @@ local function drawMap()
     local h=heaters[i]
     local okE,e=pcall(function() return h.p.getExport() end)
     local exp=(okE and type(e)=="number") and e or 0
-    local col=(exp>heaterExportOkMb) and GREEN or RED
-    local sx=originX + (h.ix - 1) * spacing * xScale
-    local sy=originY + (h.iz - 1) * spacing * yScale
-    plotBox(sx,sy,2,2,col)
+    desired[h.ix][h.iz]=(exp>heaterExportOkMb) and GREEN or RED
   end
+
+  if mapDirty then
+    gpu.setBackground(0x000000)
+    gpu.fill(mapX1, mapY1, mapW, mapH, " ")
+    mapCache={}
+  end
+
+  for ix=1,nx do
+    if not mapCache[ix] then mapCache[ix]={} end
+    for iz=1,nz do
+      local color = desired[ix][iz]
+      if mapDirty or mapCache[ix][iz] ~= color then
+        local sx=originX + (ix - 1) * spacing * xScale
+        local sy=originY + (iz - 1) * spacing * yScale
+        plotBox(sx, sy, 2, 2, color)
+        mapCache[ix][iz]=color
+      end
+    end
+  end
+
+  mapDirty=false
 end
 
 -- SCRAM

@@ -1,4 +1,4 @@
--- OpenRBMK configuration file for v14.19
+-- OpenRBMK configuration file for v14.19 and up
 -- Strong unattended-operation configuration
 
 return {
@@ -25,5 +25,5 @@ return {
   heaterExportOkMb  = 2,
 
   titleOverride     = nil,
-  versionOverride   = "v14.19H"
+  versionOverride   = nil
 }

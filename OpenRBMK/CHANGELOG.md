@@ -1,11 +1,29 @@
-
-## Unreleased Changes
+## OpenRBMK 14.20.02 - 2026-03-19 (UNRELEASED)
 
 ### Changed
+- Map renderer now uses cached cell updates instead of full redraws (eliminates display flicker)
+- Reactor map no longer enforces strict geometric spacing; prioritizes stable visualization over exact coordinate gaps
 
 ### Fixed
+- Eliminated map flickering caused by full-frame clears and redraw cycles
+- Prevented redundant GPU fill operations on unchanged cells
 
 ### Added
+- Per-cell framebuffer cache for map rendering
+- Dirty-state tracking for layout-triggered full redraws only
+
+<br>
+
+## OpenRBMK 14.20.01 - 2026-03-19
+
+### Changed
+- Map renderer draws non-addressable segments as middle gray 0x555555
+
+### Fixed
+- Reactor map now properly enforces geometric spacing
+
+### Added
+- Nothing!
 
 <br>
 
