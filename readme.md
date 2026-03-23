@@ -2,9 +2,6 @@ A collection of all the code I have made for anything even remotely related to O
 
 
 # Programs List
-
-
-***
 # OpenRBMK
 
 OpenRBMK is a real-time monitoring and control system for RBMK-style reactors built for OpenComputers and HBM Nuclear Tech.
