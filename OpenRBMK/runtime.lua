@@ -9,7 +9,7 @@ local M = {}
 local gpu = component.gpu
 
 local defaultTitle = "OpenRBMK Any-Core Monitor"
-local defaultVersion = "V15.00.00"
+local defaultVersion = "V14.20.02"
 local defaultMeltC = 2865
 
 local scrW, scrH = 60, 24
@@ -833,9 +833,9 @@ function M.run()
 
   while true do
     if gauge then
-      local ok, _, mbs = pcall(function() return gauge.getTransfer() end)
+      local ok, mbt, mbs = pcall(function() return gauge.getTransfer() end)
       if ok and type(mbs) == "number" then
-        flowSec = mbs
+        flowSec = mbt * 20
       else
         flowSec = 0
       end
