@@ -10,7 +10,7 @@ It is designed to emulate structured reactor control systems with deterministic 
 
 OpenRBMK provides continuous reactor telemetry, derived physics calculations, automated safety systems, and a GPU-rendered interface.
 
-The system operates on a fixed update loop (~0.1s) and is designed for full-core monitoring with stable, predictable output.
+The system operates on a variable update loop (~0.1s) and is designed for full-core monitoring with stable, predictable output.
 
 <br>
 

@@ -1,3 +1,38 @@
+## OpenRBMK 15.00.00 - 2026-03-23
+
+### Changed
+- Replaced floppy-based configuration workflow with command-line interface (`openrbmk`)
+- Introduced unified command system (`openrbmk start`, `openrbmk settings`, `openrbmk help`)
+- Refactored settings system to schema-driven structure (categories, typed fields, validation)
+- Reorganized configuration categories for clarity and separation of concerns
+- Moved all Redstone configuration into dedicated **Redstone I/O** category
+- Updated Setup category to remove hardware-specific configuration
+- Default mode selection now replaces auto-start behavior
+- Runtime now loads configuration exclusively from on-disk settings
+- Floppy interaction is now manual-trigger only (no automatic reads on insertion)
+- Live configuration updates no longer interrupt runtime state (mode, SCRAM, control state preserved)
+
+### Fixed
+- Resolved stale configuration loading requiring reboot (module reload consistency)
+- Corrected floppy import failures due to invalid file handling and path mismatch
+- Fixed validation issues when importing legacy configuration files
+- Eliminated unused and non-functional configuration fields (e.g., auto-start logic)
+
+### Added
+- Full command-line frontend (`openrbmk.lua`)
+- Interactive settings UI with keyboard-driven navigation (non-blocking input model)
+- Persistent configuration storage (`/etc/openrbmk/settings.lua`)
+- Manual floppy import system triggered by runtime keypress (`s`)
+- Live config hot-apply system (non-destructive to active runtime state)
+- New configuration category: **Redstone I/O**
+- Support for component address-based Redstone routing (Main, Auxiliary, Manual)
+- Enum-based mode system (SCRAM, MANUAL, AUTO)
+- Built-in help system (`openrbmk help`)
+- Range-validated numeric inputs and typed configuration schema
+- Default value fallback handling for missing/legacy configuration fields
+
+<br>
+
 ## OpenRBMK 14.20.02 - 2026-03-19 (UNRELEASED)
 
 ### Changed
